@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+}
+
+.headerContent {
+  height: 56px;
+  line-height: 56px;
+  font-size: 24px;
+  color: #ffffff;
+  padding: 0px 15px;
+  background-color: rebeccapurple;
+  background-image: linear-gradient(to bottom right, #ff000063, #0000ff2b);
+}
+
+/* Task Screen Styles */
+.taskListWrapper {
+  width: 80%;
+  height: 450px;
+  overflow: auto;
+  margin: 50px auto;
+}
+
+.taskHeaderContent {
+  height: 39px;
+  line-height: 39px;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  padding: 0px 15px;
+  background-color: rebeccapurple;
+  background-image: linear-gradient(to bottom right, #ff000063, #0000ff2b);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.taskListContainer {
+  border: 3px solid #0000ff2b;
+  border-top: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.taskChunks {
+  width: 98%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  box-shadow: 1px 1px 5px #2e2e2e;
+  margin: 8px 0px;
+  padding: 0px 10px;
+}
+
+.taskTagTodo {
+  font-size: 14px;
+  color: gray;
+  background: #ef6b56a1;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.taskTagDone {
+  font-size: 14px;
+  color: gray;
+  background: #56ef8ca1;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.iconWrapper {
+  float: right;
+}
+
+.iconSeperator {
+  margin-right: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
+}
+
+.iconSeperator:hover {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #80808059;
+  border-radius: 10px;
+}
+
+/* Edit Pop Up Styles */
+
+.popupoverlay {
+  width: 100%;
+  height: 100vh;
+  background-color: #2e2e2e59;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+.popUpContainer {
+  width: 60%;
+  height: 200px;
+  background-color: honeydew;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.popUpHeading {
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: #865cd8;
+}
+
+.fieldLabel {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.fieldStyle {
+  width: 90%;
+  background: none;
+  border: none;
+  background-color: none;
+  border-bottom: 2px dotted #5e5e5e;
+  outline: none;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.fieldWrap {
+  padding: 10px;
+  width: 100%;
+}
+
+.buttonGroups {
+  width: auto;
+  height: 40px;
+  float: right;
+}
+
+.buttonPrimary {
+  width: auto;
+  padding: 6px;
+  margin: 0px 9px;
+  border: none;
+  background: no-repeat;
+  color: #ffffff;
+  background-color: #0095ffb8;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  outline: none;
+}
+
+.buttonSuccess {
+  width: auto;
+  padding: 6px;
+  margin: 0px 9px;
+  border: none;
+  background: no-repeat;
+  color: #ffffff;
+  background-color: #0e9444b8;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  outline: none;
+}
+
+.buttonClose {
+  width: auto;
+  padding: 6px;
+  margin: 0px 9px;
+  border: none;
+  background: no-repeat;
+  color: #5e5e5e;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.errorMsg{
+    color: red;
+    font-size: 12px;
+    padding: 3px;
+}
+
+button:disabled,
+button[disabled]{
+    background-color: #5e5e5e2e;
+}
