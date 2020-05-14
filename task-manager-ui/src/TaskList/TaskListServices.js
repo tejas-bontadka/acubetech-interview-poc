@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/task";
+const REQUEST_QUERY = process.env.REACT_APP_API_URL;
 
 export const getAllTasksFromApi = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}`);
+    const { data } = await axios.get(`${REQUEST_QUERY}`);
     return data;
   } catch (err) {
     return err;
@@ -13,7 +13,7 @@ export const getAllTasksFromApi = async () => {
 
 export const createTask = async (payload) => {
   try {
-    const { data } = await axios.post(`${API_URL}`, payload);
+    const { data } = await axios.post(`${REQUEST_QUERY}`, payload);
     return data;
   } catch (err) {
     return err;
@@ -22,7 +22,10 @@ export const createTask = async (payload) => {
 
 export const updateTask = async (payload) => {
   try {
-    const { data } = await axios.put(`${API_URL}/${payload._id}`, payload);
+    const { data } = await axios.put(
+      `${REQUEST_QUERY}/${payload._id}`,
+      payload
+    );
     return data;
   } catch (err) {
     return err;
@@ -31,7 +34,7 @@ export const updateTask = async (payload) => {
 
 export const deleteTask = async (id) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/${id}`);
+    const { data } = await axios.delete(`${REQUEST_QUERY}/${id}`);
     return data;
   } catch (err) {
     return err;

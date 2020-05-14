@@ -55,8 +55,8 @@ const TaskList = () => {
       </div>
       <div className="taskListContainer">
         {!tasks.length && <div> No Tasks </div>}
-        {tasks.map((task) => (
-          <div className="taskChunks">
+        {tasks.map((task, index) => (
+          <div className="taskChunks" key={index}>
             <span
               className={task.status === "Todo" ? "taskTagTodo" : "taskTagDone"}
             >

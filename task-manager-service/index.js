@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const taskManagerController = require("./apis/controller/TaskController");
+const logger = require('./utils/Logger');
 
-const port = 5000; // Dont have .env set up, so hardcoded the port number
+const port = process.env.PORT || 5000; 
 
 mongoose.connect(
   "mongodb+srv://tejasnbontadka:tejasnbontadka@cluster0-kcqsh.mongodb.net/test?retryWrites=true&w=majority"
@@ -34,5 +37,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`The server has started in port ${port}`);
+  console.log('info',`The server has started in port ${port}`);
 });
