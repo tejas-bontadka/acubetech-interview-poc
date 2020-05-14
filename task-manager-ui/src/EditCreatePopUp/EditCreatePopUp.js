@@ -82,7 +82,7 @@ const EditCreatePopUp = (props) => {
               Create
             </button>
           )}
-          {props.action === "update" && (
+          {props.action === "update" && props.task.status === 'Todo' && (
             <span>
               <button
                 className="buttonPrimary"
