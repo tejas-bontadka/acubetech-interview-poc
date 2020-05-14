@@ -1,21 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Common/Styles.css";
 import { AiFillDelete } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { RiMenuAddLine } from "react-icons/ri";
 import EditCreatePopUp from "../EditCreatePopUp";
-
-const tasks = [
-  { taskId: "123", description: "Task1rtyhui", assignee: "XYZ", status: "Todo" },
-  { taskId: "456", description: "Task10oiuhg", assignee: "XYZ", status: "Todo" },
-  { taskId: "789", description: "Taskaserthbn1", assignee: "XYZ", status: "Done" },
-  { taskId: "852", description: "Tasrdcvhjk,mnk1", assignee: "XYZ", status: "Todo" },
-];
+import { getAllTasksFromApi, deleteTask } from "./TaskListServices";
 
 const TaskList = () => {
+  const [tasks, setTasks] = useState([]);
   const [action, setAction] = useState("create");
   const [selectedTask, setSelectedTask] = useState({});
   const [openPopUp, setOpenPopUp] = useState(false);
+
+  useEffect(() => {
+    getAllTasks();
+  }, []);
+
+  const getAllTasks = async () => {
+    const res = await getAllTasksFromApi();
+    if (res && res.status === 200) {
+      setTasks(res.data);
+    } else {
+      setTasks([]);
+    }
+  };
+
+  const deleteItemTask = async (task) => {
+    const res = await deleteTask(task._id);
+    if (res && res.status === 200) {
+      getAllTasks();
+    }
+  };
 
   const updateAction = (value, data) => {
     setAction(value);
@@ -24,8 +39,8 @@ const TaskList = () => {
   };
 
   const closePopUp = () => {
-      setOpenPopUp(false);
-  }
+    setOpenPopUp(false);
+  };
 
   return (
     <div className="taskListWrapper">
@@ -39,6 +54,7 @@ const TaskList = () => {
         </span>
       </div>
       <div className="taskListContainer">
+        {!tasks.length && <div> No Tasks </div>}
         {tasks.map((task) => (
           <div className="taskChunks">
             <span
@@ -56,14 +72,24 @@ const TaskList = () => {
               >
                 <MdEdit />
               </span>
-              <span className="iconSeperator">
+              <span
+                className="iconSeperator"
+                onClick={() => deleteItemTask(task)}
+              >
                 <AiFillDelete />
               </span>
             </span>
           </div>
         ))}
       </div>
-      {openPopUp && <EditCreatePopUp task={selectedTask} action={action} closePopUp={closePopUp}/>}
+      {openPopUp && (
+        <EditCreatePopUp
+          task={selectedTask}
+          action={action}
+          closePopUp={closePopUp}
+          getAllTasks={getAllTasks}
+        />
+      )}
     </div>
   );
 };
